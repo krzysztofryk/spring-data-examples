@@ -2,6 +2,7 @@ package pl.kryk.data.domain;
 
 import lombok.Data;
 import lombok.NonNull;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -11,6 +12,7 @@ import org.springframework.data.annotation.Version;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -37,15 +39,19 @@ public class User {
 	private UserType userType = UserType.INTERNAL;
 
 	@CreatedDate
+	@NotNull
 	private Date createdDate;
 
 	@LastModifiedDate
+	@NotNull
 	private Date modifiedDate;
 
 	@CreatedBy
+	@NotBlank
 	private String createdBy;
 
 	@LastModifiedBy
+	@NotBlank
 	private String lastModifiedBy;
 
 	@Version

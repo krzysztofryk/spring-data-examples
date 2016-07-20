@@ -1,7 +1,6 @@
 package pl.kryk.data.specifications;
 
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.data.jpa.domain.Specifications;
 import pl.kryk.data.domain.User;
 
 import javax.persistence.criteria.CriteriaBuilder;
