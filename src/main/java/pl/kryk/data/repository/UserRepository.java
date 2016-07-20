@@ -1,76 +1,36 @@
 package pl.kryk.data.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import pl.kryk.data.domain.User;
+import pl.kryk.data.domain.UserType;
+
+import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * Created by kryk on 19.07.2016.
  */
 public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 
-    User findByNickname(String nickname);
+    User getByNickname(String nickname);
 
-/**
- *
- * List<Person> findByEmailAddressAndLastname(EmailAddress emailAddress, String lastname);
+    User getByEmailOrNickname(String email, String nickname);
 
- // Enables the distinct flag for the query
- List<Person> findDistinctPeopleByLastnameOrFirstname(String lastname, String firstname);
- List<Person> findPeopleDistinctByLastnameOrFirstname(String lastname, String firstname);
+    User getByEmailAndNickname(String email, String nickname);
 
- // Enabling ignoring case for an individual property
- List<Person> findByLastnameIgnoreCase(String lastname);
- // Enabling ignoring case for all suitable properties
- List<Person> findByLastnameAndFirstnameAllIgnoreCase(String lastname, String firstname);
+    User getByNicknameIgnoreCase(String nickname);
 
- // Enabling static ORDER BY for a query
- List<Person> findByLastnameOrderByFirstnameAsc(String lastname);
- List<Person> findByLastnameOrderByFirstnameDesc(String lastname);
+    List<User> findByActiveTrueAndUserType(UserType userType);
 
+    List<User> findByActiveTrueOrderByNicknameAsc();
 
- Page<User> findByLastname(String lastname, Pageable pageable);
+    Page<User> queryFirst10ByNickname(String nickname, Pageable pageable);
 
- Slice<User> findByLastname(String lastname, Pageable pageable);
-
- List<User> findByLastname(String lastname, Sort sort);
-
- List<User> findByLastname(String lastname, Pageable pageable);
-
-
-
-
- User findFirstByOrderByLastnameAsc();
-
- User findTopByOrderByAgeDesc();
-
- Page<User> queryFirst10ByLastname(String lastname, Pageable pageable);
-
- Slice<User> findTop3ByLastname(String lastname, Pageable pageable);
-
- List<User> findFirst10ByLastname(String lastname, Sort sort);
-
- List<User> findTop10ByLastname(String lastname, Pageable pageable);
-
- @Query("select u from User u")
- Stream<User> findAllByCustomQueryAndStream();
-
- Stream<User> readAllByFirstnameNotNull();
-
- @Query("select u from User u")
- Stream<User> streamAllPaged(Pageable pageable);
-
-
-
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- */
+    @Query("select u from User u")
+    Stream<User> findBySqlQueryAndStream();
 
 }

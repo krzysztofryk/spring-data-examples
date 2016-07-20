@@ -3,8 +3,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.springframework</groupId>
-    <artifactId>gs-spring-boot</artifactId>
+    <groupId>pl.kryk.data</groupId>
+    <artifactId>spring-data-examples</artifactId>
     <version>0.1.0</version>
 
     <parent>
@@ -43,12 +43,13 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.10</version>
+            <version>${lombok.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <java.version>1.8</java.version>
+        <lombok.version>1.16.10</lombok.version>
     </properties>
 
     <build>
