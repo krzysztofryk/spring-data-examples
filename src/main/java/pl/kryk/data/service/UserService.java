@@ -27,7 +27,7 @@ public interface UserService {
 
     List<User> findByActiveTrueOrderByNicknameAsc();
 
-    Page<User> queryFirst10ByNickname(String nickname, Pageable pageable);
+    Page<User> findByUserType(UserType userType, Pageable pageable);
 
     Stream<User> findBySqlQueryAndStream();
 

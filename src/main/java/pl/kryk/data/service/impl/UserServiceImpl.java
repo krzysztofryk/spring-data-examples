@@ -61,8 +61,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Page<User> queryFirst10ByNickname(String nickname, Pageable pageable) {
-		return userRepository.queryFirst10ByNickname(nickname, pageable);
+	public Page<User> findByUserType(UserType userType, Pageable pageable) {
+		return userRepository.findByUserType(userType, pageable);
 	}
 
 	@Override

@@ -28,7 +28,7 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 
     List<User> findByActiveTrueOrderByNicknameAsc();
 
-    Page<User> queryFirst10ByNickname(String nickname, Pageable pageable);
+    Page<User> findByUserType(UserType userType, Pageable pageable);
 
     @Query("select u from User u")
     Stream<User> findBySqlQueryAndStream();
