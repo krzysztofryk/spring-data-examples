@@ -29,8 +29,6 @@ public class UserServiceImplTest extends BaseTest {
 
 	private User user3;
 
-	// TODO: Spock Spring
-
 	@Before
 	public void setUp() {
 		String nickname1 = "krzysztof";
@@ -166,7 +164,10 @@ public class UserServiceImplTest extends BaseTest {
 
 	@Test
 	public void findBySqlQueryAndStream() {
+		List<User> result = userService.findAllBySqlQuery();
 
+		Assert.assertNotNull(result);
+		Assert.assertEquals(3, result.size());
 	}
 
 }

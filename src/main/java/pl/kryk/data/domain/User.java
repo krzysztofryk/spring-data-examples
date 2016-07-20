@@ -7,8 +7,8 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -25,8 +25,18 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@NotEmpty
+	private String nickname;
+
+	@NotEmpty
+	private String email;
+
+	private boolean active;
+
+	@NonNull
+	private UserType userType = UserType.INTERNAL;
+
 	@CreatedDate
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	private Date createdDate;
 
 	@LastModifiedDate
@@ -38,15 +48,7 @@ public class User {
 	@LastModifiedBy
 	private String lastModifiedBy;
 
-	@NotEmpty
-	private String nickname;
-
-	@NotEmpty
-	private String email;
-
-	private boolean active;
-
-	@NonNull
-	private UserType userType = UserType.INTERNAL;
+	@Version
+	private long version = 0;
 
 }

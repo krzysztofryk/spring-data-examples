@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Stream<User> findBySqlQueryAndStream() {
-		return userRepository.findBySqlQueryAndStream();
+	public List<User> findAllBySqlQuery() {
+		return userRepository.findAllBySqlQuery();
 	}
 }
