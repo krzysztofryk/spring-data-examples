@@ -8,8 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.data.repository.RepositoryDefinition;
-import org.springframework.stereotype.Repository;
 import pl.kryk.data.misc.AuditorAwareImpl;
 
 @SpringBootApplication
