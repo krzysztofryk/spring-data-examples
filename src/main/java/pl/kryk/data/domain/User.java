@@ -1,35 +1,54 @@
 package pl.kryk.data.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NonNull;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  * Created by kryk on 19.07.2016.
  */
 @Entity
 @Data
+@EntityListeners(AuditingEntityListener.class)
 public class User {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    @NotEmpty
-    private String nickname;
+	@CreatedDate
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+	private Date createdDate;
 
-    @NotEmpty
-    private String email;
+	@LastModifiedDate
+	private Date modifiedDate;
 
-    private boolean active;
+	@CreatedBy
+	private String createdBy;
 
-    @NonNull
-    private UserType userType = UserType.INTERNAL;
+	@LastModifiedBy
+	private String lastModifiedBy;
+
+	@NotEmpty
+	private String nickname;
+
+	@NotEmpty
+	private String email;
+
+	private boolean active;
+
+	@NonNull
+	private UserType userType = UserType.INTERNAL;
 
 }

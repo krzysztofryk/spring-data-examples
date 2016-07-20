@@ -2,6 +2,8 @@ package pl.kryk.data.service.impl;
 
 import org.junit.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.repository.CrudRepository;
 import pl.kryk.data.domain.User;
 import pl.kryk.data.domain.UserType;
@@ -148,8 +150,18 @@ public class UserServiceImplTest extends BaseTest {
 	}
 
 	@Test
-	public void queryFirst10ByNickname() {
+	public void findByUserType() {
+		Page<User> result = userService.findByUserTypeOrderByNicknameDesc(UserType.EXTERNAL,
+				new PageRequest(0, 1));
+		Assert.assertNotNull(result);
+		Assert.assertEquals(1, result.getNumberOfElements());
+		Assert.assertEquals(user3, result.getContent().get(0));
 
+		result = userService.findByUserTypeOrderByNicknameDesc(UserType.EXTERNAL,
+				new PageRequest(1, 1));
+		Assert.assertNotNull(result);
+		Assert.assertEquals(1, result.getNumberOfElements());
+		Assert.assertEquals(user2, result.getContent().get(0));
 	}
 
 	@Test

@@ -61,8 +61,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Page<User> findByUserType(UserType userType, Pageable pageable) {
-		return userRepository.findByUserType(userType, pageable);
+	public Page<User> findByUserTypeOrderByNicknameDesc(UserType userType, Pageable pageable) {
+		return userRepository.findByUserTypeOrderByNicknameDesc(userType, pageable);
 	}
 
 	@Override
