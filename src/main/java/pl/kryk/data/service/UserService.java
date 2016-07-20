@@ -29,4 +29,6 @@ public interface UserService {
 
 	List<User> findAllBySqlQuery();
 
+	User getByNicknameUsingSpec(String nickname);
+
 }

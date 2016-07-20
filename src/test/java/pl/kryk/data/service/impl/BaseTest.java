@@ -1,5 +1,6 @@
 package pl.kryk.data.service.impl;
 
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.ActiveProfiles;
@@ -12,6 +13,7 @@ import pl.kryk.data.configuration.Application;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @ActiveProfiles("test")
+@Ignore
 public class BaseTest {
 
 }

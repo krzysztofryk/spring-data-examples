@@ -155,8 +155,7 @@ public class UserServiceImplTest extends BaseTest {
 		Assert.assertEquals(1, result.getNumberOfElements());
 		Assert.assertEquals(user3, result.getContent().get(0));
 
-		result = userService.findByUserTypeOrderByNicknameDesc(UserType.EXTERNAL,
-				new PageRequest(1, 1));
+		result = userService.findByUserTypeOrderByNicknameDesc(UserType.EXTERNAL, new PageRequest(1, 1));
 		Assert.assertNotNull(result);
 		Assert.assertEquals(1, result.getNumberOfElements());
 		Assert.assertEquals(user2, result.getContent().get(0));
@@ -168,6 +167,15 @@ public class UserServiceImplTest extends BaseTest {
 
 		Assert.assertNotNull(result);
 		Assert.assertEquals(3, result.size());
+	}
+
+	@Test
+	public void getByNicknameUsingSpec() {
+		String nickname = user1.getNickname();
+		User result = userService.getByNicknameUsingSpec(nickname);
+
+		Assert.assertNotNull(result);
+		Assert.assertEquals(user1, result);
 	}
 
 }

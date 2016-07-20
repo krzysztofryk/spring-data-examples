@@ -9,6 +9,7 @@ import pl.kryk.data.domain.User;
 import pl.kryk.data.domain.UserType;
 import pl.kryk.data.repository.UserRepository;
 import pl.kryk.data.service.UserService;
+import pl.kryk.data.specifications.UserSpecifications;
 
 import java.util.List;
 import java.util.Optional;
@@ -69,5 +70,11 @@ public class UserServiceImpl implements UserService {
 	@Transactional(readOnly = true)
 	public List<User> findAllBySqlQuery() {
 		return userRepository.findAllBySqlQuery();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public User getByNicknameUsingSpec(String nickname) {
+		return userRepository.findOne(UserSpecifications.getByNickname(nickname));
 	}
 }

@@ -15,23 +15,23 @@ import java.util.stream.Stream;
 /**
  * Created by kryk on 19.07.2016.
  */
-public interface UserRepository extends PagingAndSortingRepository<User, Long>, JpaSpecificationExecutor<User> {
+public interface UserRepository
+		extends PagingAndSortingRepository<User, Long>, JpaSpecificationExecutor<User> {
 
-    User getByNickname(String nickname);
+	User getByNickname(String nickname);
 
-    User getByEmailOrNickname(String email, String nickname);
+	User getByEmailOrNickname(String email, String nickname);
 
-    User getByEmailAndNickname(String email, String nickname);
+	User getByEmailAndNickname(String email, String nickname);
 
-    User getByNicknameIgnoreCase(String nickname);
+	User getByNicknameIgnoreCase(String nickname);
 
-    List<User> findByActiveTrueAndUserType(UserType userType);
+	List<User> findByActiveTrueAndUserType(UserType userType);
 
-    List<User> findByActiveTrueOrderByNicknameAsc();
+	List<User> findByActiveTrueOrderByNicknameAsc();
 
-    Page<User> findByUserTypeOrderByNicknameDesc(UserType userType, Pageable pageable);
+	Page<User> findByUserTypeOrderByNicknameDesc(UserType userType, Pageable pageable);
 
-    @Query("select u from User u")
-    List<User> findAllBySqlQuery();
-
+	@Query("select u from User u")
+	List<User> findAllBySqlQuery();
 }
